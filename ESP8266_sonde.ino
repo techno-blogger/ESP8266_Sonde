@@ -11,12 +11,11 @@ void setup() {
 
   wifi monWifi;
   monWifi.listeAllWifi();
-
-
-
-
   
   //Configuration du WIFI en mode station (emeteur)
+  //  WIFI_STA     mode station
+  //  WIFI_AP_STA  mode station et point d'acces
+  //  WIFI_AP      mode point d'acces
   WiFi.mode(WIFI_STA);
   //Déconnection si nous étions en mode AP (récepteur)
   WiFi.disconnect();
