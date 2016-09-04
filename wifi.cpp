@@ -2,8 +2,8 @@
 
 
 wifi::wifi(){
-  mlog.ecrireLogSource("Wifi_scan.cpp");
-  mlog.ecrireLog("constructeur","Configuration du WIFI en mode station (emeteur)");
+  mlog.ecrireLogSource("Wifi.cpp");
+  mlog.ecrireLog("constructeur","Configuration du WIFI en mode station (emetteur)");
   WiFi.mode(WIFI_STA);
   mlog.ecrireLog("Déconnection si nous étions en mode AP (récepteur)");
   WiFi.disconnect();
@@ -19,7 +19,7 @@ int wifi::nbWifi(){
     scanReseauWifi();  
   }
   
-  mlog.ecrireLog("nbWifi",nbWifiTrouve + " réseau(x) wifi trouvé(s)");
+  mlog.ecrireLog("nbWifi",String(nbWifiTrouve) + " réseau(x) wifi trouvé(s)");
   return nbWifiTrouve;
 }
 
@@ -41,9 +41,9 @@ WifiDetail wifi::listeUnWifi(int numWifi){
     reseauWifi.cryptage = "";
   }
 
-  mlog.ecrireLog("listeWifi","SSID : " + reseauWifi.ssid);
-  mlog.ecrireLog("listeWifi","RSSI : " + reseauWifi.rssi);
-  mlog.ecrireLog("listeWifi","Cryptage : " + reseauWifi.cryptage);
+  mlog.ecrireLog("listeWifi","SSID : " + reseauWifi.ssid + " | RSSI : " + reseauWifi.rssi + " | Cryptage : " + reseauWifi.cryptage);
+//  mlog.ecrireLog("listeWifi","RSSI : " + reseauWifi.rssi);
+//  mlog.ecrireLog("listeWifi","Cryptage : " + reseauWifi.cryptage);
   
   return reseauWifi;
 }
@@ -54,7 +54,7 @@ void wifi::listeAllWifi(){
     scanReseauWifi();  
   }
   
-  for (int i = 0; i <= nbWifiTrouve; ++i)
+  for (int i = 0; i < nbWifiTrouve; ++i)
   {
     listeUnWifi(i);
   }  
@@ -71,7 +71,7 @@ void wifi::scanReseauWifi(){
     mlog.ecrireLog("Pas de réseau WIFI trouvé");
   else
   {
-    mlog.ecrireLog( nbWifiTrouve + " réseau(x) WIFI trouvé(s)" );
+    mlog.ecrireLog( String(nbWifiTrouve) + "  WIFI trouvés" );
   }
 }
 

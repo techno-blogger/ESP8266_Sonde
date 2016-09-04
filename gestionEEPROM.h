@@ -22,8 +22,7 @@ class gestionEEPROM
     gestionEEPROM();
     // vider le contenu de l'EEPROM
     void viderEEPROM();
-    void lireEEPROM();
-    void ecrireEEPROM();
+
     
     void ecrireSSID(String ssid);
     void ecrirePassword(String password);
@@ -37,7 +36,10 @@ class gestionEEPROM
 
 
    private:
+    logger mlog;
     StructureEEPROM contenuEEPROM; 
+    void lireEEPROM();
+    void ecrireEEPROM();
 
 
  

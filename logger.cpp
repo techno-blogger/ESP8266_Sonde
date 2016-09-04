@@ -46,6 +46,7 @@ void logger::ecrireLog(String texte){
 }
 
 void logger::nouveauFichier(String fichierCpp){
+  Serial.println("");
   if (ancienFichierCpp != ""){
     Serial.println("==========================================");
   }
@@ -59,6 +60,8 @@ void logger::nouvelleFonction(String fonction){
 }
 
 void logger::nouveauLog(String texte){
-  Serial.println("             => " + texte);
+  if (texte != ""){
+    Serial.println("             => " + texte);   
+  } 
 }
 
