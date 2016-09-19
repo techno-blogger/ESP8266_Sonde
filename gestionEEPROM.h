@@ -13,6 +13,7 @@ typedef struct
   String password;
   String ipMQTT;
   int delaisRafraichissement;
+  char* ssid2;  
 } StructureEEPROM;
 
 class gestionEEPROM
@@ -25,11 +26,13 @@ class gestionEEPROM
 
     
     void ecrireSSID(String ssid);
+    void ecrireSSID2(char* ssid2);
     void ecrirePassword(String password);
     void ecrireIpMQTT(String IpMQTT);
     void ecrireDelaisRafraichissement (int delais);
 
     String lireSSID();
+    char* lireSSID2();
     String lirePassword();
     String lireIpMQTT();
     int lireDelaisRafraichissement ();

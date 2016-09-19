@@ -36,6 +36,9 @@ void gestionEEPROM::lireEEPROM(){
   mlog.ecrireLog("EEPROM IPMQTT " + String(contenuEEPROM.ipMQTT));
   mlog.ecrireLog("=====");
   mlog.ecrireLog("EEPROM Delais " + String(contenuEEPROM.delaisRafraichissement));
+  mlog.ecrireLog("=====");
+  mlog.ecrireLog("EEPROM SSID2 " + String(contenuEEPROM.ssid2));
+  
   EEPROM.end();
 };
 
@@ -56,9 +59,23 @@ void gestionEEPROM::ecrireSSID(String ssid){
   }
 };
 
+void gestionEEPROM::ecrireSSID2(char* ssid2){
+  mlog.ecrireLog("ecrireSSID2","ecriture du SSID2 dans la mémoire");
+  if(contenuEEPROM.ssid2 != ssid2){
+    contenuEEPROM.ssid2 = ssid2;
+    
+    ecrireEEPROM();      
+  }
+};
+
 String gestionEEPROM::lireSSID(){
   mlog.ecrireLog("lireSSID","lecture du SSID en mémoire");
   return contenuEEPROM.ssid ;   
+};
+
+char* gestionEEPROM::lireSSID2(){
+  mlog.ecrireLog("lireSSID","lecture du SSID2 en mémoire");
+  return contenuEEPROM.ssid2 ;   
 };
 
 void gestionEEPROM::ecrirePassword(String password){
